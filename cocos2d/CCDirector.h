@@ -86,6 +86,9 @@ and when to execute the Scenes.
 	
 	/* display FPS ? */
 	BOOL displayFPS_;
+    
+    /* position FPS? */
+	CGPoint positionFPS;
 
 	NSUInteger frames_;
 	ccTime accumDt_;
@@ -153,6 +156,8 @@ and when to execute the Scenes.
 @property (nonatomic,readwrite, assign) NSTimeInterval animationInterval;
 /** Whether or not to display the FPS on the bottom-left corner */
 @property (nonatomic,readwrite, assign) BOOL displayFPS;
+//** To position the FPS label */
+@property (nonatomic,readwrite, assign) CGPoint positionFPS;
 /** The OpenGLView, where everything is rendered */
 @property (nonatomic,readwrite,retain) CC_GLVIEW *openGLView;
 /** whether or not the next delta time will be zero */

@@ -79,6 +79,7 @@ extern NSString * cocos2dVersion(void);
 @synthesize animationInterval = animationInterval_;
 @synthesize runningScene = runningScene_;
 @synthesize displayFPS = displayFPS_;
+@synthesize positionFPS = positionFPS_;
 @synthesize nextDeltaTimeZero = nextDeltaTimeZero_;
 @synthesize isPaused = isPaused_;
 @synthesize sendCleanupToScene = sendCleanupToScene_;
@@ -511,7 +512,10 @@ static CCDirector *_sharedDirector = nil;
 		[FPSLabel_ setString:str];
 		[str release];
 	}
-
+		
+    // Change position of FPS
+	glTranslatef(positionFPS_.x,positionFPS_.y,0);
+    
 	[FPSLabel_ draw];
 }
 #else
