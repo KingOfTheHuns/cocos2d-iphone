@@ -540,6 +540,7 @@
 
   //Calculate X
 	startAngleX_ = [target_ rotationX];
+    startAngleX_ = fmodf(startAngleX_, 360.0f);
 
 	diffAngleX_ = dstAngleX_ - startAngleX_;
 	if (diffAngleX_ > 180)
@@ -549,10 +550,7 @@
   
   //Calculate Y
 	startAngleY_ = [target_ rotationY];
-	if (startAngleY_ > 0)
-		startAngleY_ = fmodf(startAngleY_, 360.0f);
-	else
-		startAngleY_ = fmodf(startAngleY_, -360.0f);
+    startAngleY_ = fmodf(startAngleY_, 360.0f);
   
 	diffAngleY_ = dstAngleY_ - startAngleY_;
 	if (diffAngleY_ > 180)
