@@ -625,7 +625,8 @@ static BOOL configured = FALSE;
 				} else {
 					//Music is either paused or stopped, if it is paused it will be restarted
 					//by OS so we will stop it.
-					audioSource->systemPaused = NO;
+                    // TODO: workaround for issue  Issue 1266
+					//audioSource->systemPaused = NO;
 					[audioSource stop];
 				}
 			}
