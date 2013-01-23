@@ -137,13 +137,6 @@ const NSInteger kSceneFade = 0xFADEFADE;
 
 	[director replaceScene: inScene_];
 
-	// enable events while transitions
-#ifdef __CC_PLATFORM_IOS
-	[[director touchDispatcher] setDispatchEvents: YES];
-#elif defined(__CC_PLATFORM_MAC)
-	[[director eventDispatcher] setDispatchEvents: YES];
-#endif
-
 	// issue #267
 	[outScene_ setVisible:YES];
 }
@@ -171,6 +164,15 @@ const NSInteger kSceneFade = 0xFADEFADE;
 {
 	[super onExit];
 	[outScene_ onExit];
+
+	// enable events while transitions
+    // This enables onEnterTransitionDidFinish to override
+    // setDispatchEvents in the same tick
+#ifdef __CC_PLATFORM_IOS
+	[[[CCDirector sharedDirector] touchDispatcher] setDispatchEvents: YES];
+#elif defined(__CC_PLATFORM_MAC)
+	[[[CCDirector sharedDirector] eventDispatcher] setDispatchEvents: YES];
+#endif
 
 	// inScene_ should not receive the onEnter callback
 	// only the onEnterTransitionDidFinish
